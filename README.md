@@ -50,8 +50,8 @@ Un sistema automatizado que genera cursos educativos completos utilizando inteli
 
 1. **Clonar el repositorio**:
    ```bash
-   git clone <url-del-repositorio>
-   cd sistema-generador-cursos
+   git clone https://github.com/abeluciano/AprendIA-Back.git
+   cd AprendIA-Back
    ```
 
 2. **Crear entorno virtual**:
@@ -74,7 +74,7 @@ Un sistema automatizado que genera cursos educativos completos utilizando inteli
    ```env
    GOOGLE_API_KEY=tu_google_api_key_aqui
    YOUTUBE_API_KEY=tu_youtube_api_key_aqui
-   GEMINI_MODEL_NAME=gemini-2.5-flash
+   GEMINI_MODEL_NAME=tu_version_de_gemini_a_usar
    ```
 
 5. **Ejecutar la aplicación**:
