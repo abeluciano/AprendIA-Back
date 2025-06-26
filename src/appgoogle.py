@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 import os
 import json
@@ -30,8 +30,10 @@ import emoji
 # Load environment variables
 load_dotenv()
 
-app = Flask(__name__)
-CORS(app)  # Enable CORS for frontend access
+# Crear un blueprint en lugar de una aplicación
+blueprint = Blueprint('google', __name__)
+
+CORS(blueprint)  # Enable CORS for frontend access
 
 # --- Environment variables ---
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
@@ -91,14 +93,7 @@ CORRECCIONES_COMUNES = {
     "imo": "en mi opinión",
     "imho": "en mi humilde opinión",
     "afaik": "por lo que sé",
-    "afaict": "por lo que puedo ver",
-    "afaics": "por lo que puedo ver",
-    "afaict": "por lo que puedo ver",
-    "afaics": "por lo que puedo ver",
-    "afaict": "por lo que puedo ver",
-    "afaics": "por lo que puedo ver",
-    "afaict": "por lo que puedo ver",
-    "afaics": "por lo que puedo ver",
+    "afaict": "por lo que puedo ver"
 }
 
 # Al inicio del archivo (después de imports)
@@ -997,9 +992,10 @@ def get_comments_parallel(video_id, max_results=50):
         return []
 
 
-@app.route("/solicitar_cursos", methods=["POST"])
+@blueprint.route("/solicitar_cursos", methods=["POST"])
 def solicitar_cursos():
     try:
+        start_time = time.time()
         data = request.json
         prompt = data.get("prompt", "").strip()
 
@@ -1167,7 +1163,9 @@ def solicitar_cursos():
         }
 
         end_time = time.time()
-        print(f"=== Generación de curso completada en {end_time :.2f} segundos ===")
+        elapsed_time = end_time - start_time
+        
+        print(f"=== Generación de curso completada en {elapsed_time:.2f} segundos ===")
         return jsonify(course_data)
 
     except Exception as e:
@@ -1178,7 +1176,7 @@ def solicitar_cursos():
 
 
 # Add a health check endpoint (SIN CAMBIOS)
-@app.route("/health", methods=["GET"])
+@blueprint.route("/health", methods=["GET"])
 def health_check():
     # Chequeo básico original
     youtube_ok = bool(YOUTUBE_API_KEY)
@@ -1195,8 +1193,9 @@ def health_check():
     return jsonify(status), status_code
 
 
-# --- Ejecución Principal SIN CAMBIOS ---
+# Exportar el blueprint
+app = blueprint
+
+# No ejecutar la aplicación aquí, ya que será importada como blueprint
 if __name__ == "__main__":
-    # Mantener forma original de correr la app
-    port = int(os.environ.get("PORT", 5000))  # Puerto 5000 como en muchos ejemplos Flask
-    app.run(host="0.0.0.0", port=port, debug=True)  # debug=True como en original
+    print("Este archivo debe ser importado como blueprint")
