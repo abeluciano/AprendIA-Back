@@ -1,0 +1,22 @@
+Orden,Criterio,Valor,Consideraciones,Peso(%): 1-10,ahora,Column 2,,,,,,,
+0,Numero de videos,actualmente 3,Puede variar segun secciones? o temas? o especificaión en el promt,?,5,,,,,,,,
+1,Lenguaje,Es-En,Corroborar con la transcripción,10,Solo español,,Se puede revisar las descripción para ver si es que menciona algo de la licencia,"youtube: esta restringida pero si el creador da licencia explicitamtne en algun lugar documentable, pues podriamos usarlo",En principio el orden depende de el buscador de yotutube que depende de el promt que nos da la IA para hacerlas busquedas,,,,
+2,Licencia,"""Creative Coomons""","Dar crédito a el creador, inidicar y refenciar la licencia explicitamente:
+Video: ""Título del Video"" por [Nombre del Canal], licenciado bajo CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/). Fuente: [enlace al video].
+
+Los creadores pueden cambiar la licencia(Cursos guardados).",9,,,Anuncios dentro del video,"Tarjeta -> Este video contiene contenido promocional, del creador",El numero desecciones tiene que ser restringido si el usuario lo menciona explicitamtne en el promt,,,,
+3,Duración,5min,,5,5,,Anuncios de youtube,Del propio servicio,,,,,
+4,Antiguedad,5 años*,Si es que no existen suficientes video dentro de los 5 años de antiguedad pues se toman video más antiguos.,7,,,solo para temas de tecnologia.,depedende lo actualizado del tema(IA).,,,,,
+5,Resolución,Minimo 360,Mejor: HD,3,,,,,,,,,
+6,Dimension,2d o 3d,Depende del tema,2,,,,,,,,,
+7,Subtitulos,Si o No,Puede dar un pista de la calidad de audio.,5,,,,,,,,,
+8,Monetización,Si o No,Nos sirve para saber si es que tiene publicidad más de lo regular,2,,,,,,,,,
+9,Titulo,"Compatible con la solicitud, restricciones(pero)",Depende mucho del promt,5,,,nivel,,,,,,
+10,Transcripción del contenido,"Exactitud, Pedagogia, Relevancia, Profundidad, Originalidad, Buenos valores(respeto)","Se puede agregar esto en la vista del usuario, pero curando y resumiendo partes importantes del contenido.",10,,5 min,publicidad,,,,,,
+11,Curación de audio,"Tono, calidad de audio(ruido), cortes, silencios",Podemos usar: yt-dlp con whisper,6,,,nivel de ruido,entendible,clrida de la voz,"librosa, de youutube o lo tenemos que descargar.",,,señales
+12,Comentarios,"Criticas, Vistos buenos",,5,,,250,nivel de criticas,comentarios positivos,,,,
+13,Descripción,"Relación con tema, importacia, se cura con IA",Se extraen las etiquetas que pone el creador,2,,,,,,,,,
+14,Vistas,Sin rango,Indicador,6,,,,,,,,,
+15,Likes,Proporcional a las vistas,"Para los Dislikes:
+API de Return YouTube Dislike",6,,,,no tomar en cuenta de lo diskilos,,,,,
+16,Creador,"Tipo de creador, Perfil del canal(antiguedad, temas, pais, subs, idioma)",,2,,,,,,,,,
